@@ -54,7 +54,7 @@ app.post("/register", async (req, res) => {
 
 app.get("/user", async (req, res) => {
   console.log("get request");
-  await getList();
+  await new Promise((resolve) => setTimeout(() => resolve(getList()), 5000));
   console.log(list);
   res.send(list);
 });
