@@ -3,8 +3,7 @@
 * {
   box-sizing: border-box;
 }
-body {
-  background: #1c8ef9 !important;
+.body_background {
   min-height: 100vh;
   display: flex;
   font-weight: 400;

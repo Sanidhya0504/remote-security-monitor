@@ -1,0 +1,11 @@
+.left--pannel {
+  height: 100vh;
+  background-color: #333333;
+  width: 60px;
+}
+.icons {
+  color: #fff;
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}

@@ -5,7 +5,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
-import User from "./components/user.component";
+import Home from "./components/home.component";
+import Dashboard from "./components/user.dashboard";
+import HomeDash from "./components/dashboar.components/dashboard.home";
+import AddDevice from "./components/dashboar.components/pages/add";
+import Devices from "./components/dashboar.components/pages/device";
 
 function App() {
   return (
@@ -36,10 +40,12 @@ function App() {
         <div className="auth-wrapper">
           <div className="auth-inner"> */}
       <Routes>
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/user/dashboard" element={<Dashboard />} />
+        <Route path="/user/dashboard/add" element={<AddDevice />} />
+        <Route path="/user/dashboard/devices" element={<Devices />} />
       </Routes>
       {/* </div>
         </div>

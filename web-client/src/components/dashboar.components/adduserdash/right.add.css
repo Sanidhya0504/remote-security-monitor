@@ -1,0 +1,8 @@
+.right--pannel {
+  height: 100vh;
+  background-color: #333333;
+  width: 100%;
+}
+.qr-code {
+  border-radius: 10px;
+}
