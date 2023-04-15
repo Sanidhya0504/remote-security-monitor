@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const { v1: uuidv1 } = require("uuid");
 app.use(cors());
 app.use(express.json());
-const ssm = require("aws-cdk-lib/aws-ssm");
+//const ssm = require("aws-cdk-lib/aws-ssm");
 const container = require("./cloud-operations/container-creaet");
 const { getList, list } = require("./cloud-operations/container-get");
 //const getlist = require("./cloud-operations/container-get");
