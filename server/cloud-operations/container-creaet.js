@@ -6,6 +6,7 @@ require("dotenv").config();
 const AWS = require("aws-sdk");
 var accountName = "";
 (async () => {
+  const ssm = new AWS.SSM();
   const accname = await ssm
     .getParameter({
       Name: "AZURE_STORAGE_ACCOUNT_NAME",
