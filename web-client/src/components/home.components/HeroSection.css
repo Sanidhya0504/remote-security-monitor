@@ -19,13 +19,13 @@ video {
   object-fit: contain;
 }
 
-.hero-container > h1 {
+.head {
   color: #fff;
   font-size: 100px;
   margin-top: -100px;
 }
 
-.hero-container > p {
+.sub-head {
   margin-top: 8px;
   color: #fff;
   font-size: 32px;
@@ -33,9 +33,9 @@ video {
     "Lucida Sans", Arial, sans-serif;
 }
 
-.hero-btns {
+/* .hero-btns {
   margin-top: 32px;
-}
+} */
 
 .hero-btns .btn {
   margin: 6px;

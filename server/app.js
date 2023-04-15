@@ -7,12 +7,13 @@ const bcrypt = require("bcryptjs");
 const { v1: uuidv1 } = require("uuid");
 app.use(cors());
 app.use(express.json());
+const ssm = require("aws-cdk-lib/aws-ssm");
 const container = require("./cloud-operations/container-creaet");
 const { getList, list } = require("./cloud-operations/container-get");
 //const getlist = require("./cloud-operations/container-get");
 app.listen(5000, () => console.log("Server is Running"));
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(ssm.StringParameter.valueForStringParameter(this, "MONGODB_URI"), {
     useNewUrlParser: true,
   })
   .then(() => console.log("connected to MongoDB"))

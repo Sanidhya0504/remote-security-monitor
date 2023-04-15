@@ -1,0 +1,11 @@
+.banner-image {
+  width: 50vw;
+}
+
+.body-text > h2 {
+  font-size: min(max(16px, 4vw), 30px);
+}
+.body-text > p {
+  padding: 2vw;
+  font-size: min(max(10px, 3vw), 22px);
+}

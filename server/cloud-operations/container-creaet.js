@@ -2,9 +2,13 @@ const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv").config();
+const ssm = require("aws-cdk-lib/aws-ssm");
 async function createContainer(containerName) {
   try {
-    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    const accountName = ssm.StringParameter.valueForStringParameter(
+      this,
+      "AZURE_STORAGE_ACCOUNT_NAME"
+    ); //process.env.AZURE_STORAGE_ACCOUNT_NAME;
     if (!accountName) throw Error("Azure Storage accountName not found");
 
     const blobServiceClient = new BlobServiceClient(

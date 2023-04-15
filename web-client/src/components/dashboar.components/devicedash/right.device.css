@@ -6,3 +6,7 @@
 .qr-code {
   border-radius: 10px;
 }
+
+.fetched--images {
+  height: 5vh !important;
+}
