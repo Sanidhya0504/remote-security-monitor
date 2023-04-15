@@ -5,16 +5,21 @@ require("dotenv").config();
 //const ssm = require("aws-cdk-lib/aws-ssm");
 const AWS = require("aws-sdk");
 var list = [];
+var accountName = "";
+(async () => {
+  const accname = await ssm
+    .getParameter({
+      Name: "AZURE_STORAGE_ACCOUNT_NAME",
+      WithDecryption: true,
+    })
+    .promise();
+  accountName = accname;
+})();
 async function getList() {
   var new_list = [];
   const containerName = "1eea3";
   console.log("get list calleds");
   try {
-    const ssm = new AWS.SSM();
-    const accountName = await ssm.getParameter({
-      Name: "AZURE_STORAGE_ACCOUNT_NAME",
-      WithDecryption: true,
-    });
     // const accountName = ssm.StringParameter.valueForStringParameter(
     //   this,
     //   "AZURE_STORAGE_ACCOUNT_NAME"

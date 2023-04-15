@@ -13,14 +13,18 @@ const { getList, list } = require("./cloud-operations/container-get");
 //const getlist = require("./cloud-operations/container-get");
 app.listen(5000, () => console.log("Server is Running"));
 const ssm = new AWS.SSM();
-const mongouri = await ssm
-  .getParameter({
-    Name: "MONGODB_URI",
-    WithDecryption: true,
-  })
-  .promise();
+var newuri = "";
+async () => {
+  const mongouri = await ssm
+    .getParameter({
+      Name: "MONGODB_URI",
+      WithDecryption: true,
+    })
+    .promise();
+  newuri = mongouri;
+};
 mongoose
-  .connect(mongouri, {
+  .connect(newuri, {
     useNewUrlParser: true,
   })
   .then(() => console.log("connected to MongoDB"))
