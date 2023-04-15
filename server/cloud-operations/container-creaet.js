@@ -2,7 +2,7 @@ const { BlobServiceClient } = require("@azure/storage-blob");
 const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv").config();
-const ssm = require("aws-cdk-lib/aws-ssm");
+const ssm = require("aws-cdk/aws-ssm");
 async function createContainer(containerName) {
   try {
     const accountName = ssm.StringParameter.valueForStringParameter(
