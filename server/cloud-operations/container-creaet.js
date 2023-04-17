@@ -3,29 +3,26 @@ const { v1: uuidv1 } = require("uuid");
 const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv").config();
 //const ssm = require("aws-cdk-lib/aws-ssm");
-const AWS = require("aws-sdk");
-var accountName = "";
-(async () => {
-  const ssm = new AWS.SSM();
-  const accname = await ssm
-    .getParameter({
-      Name: "AZURE_STORAGE_ACCOUNT_NAME",
-      WithDecryption: true,
-    })
-    .promise();
-  accountName = accname;
-})();
+// const AWS = require("aws-sdk");
+// var accountName = "";
+// (async () => {
+//   const ssm = new AWS.SSM();
+//   const accname = await ssm
+//     .getParameter({
+//       Name: "AZURE_STORAGE_ACCOUNT_NAME",
+//       WithDecryption: true,
+//     })
+//     .promise();
+//   accountName = accname;
+// })();
 async function createContainer(containerName) {
   try {
-    // const accountName = ssm.StringParameter.valueForStringParameter(
-    //   this,
-    //   "AZURE_STORAGE_ACCOUNT_NAME"
-    // ); //process.env.AZURE_STORAGE_ACCOUNT_NAME;
-    const ssm = new AWS.SSM();
-    const accountName = await ssm.getParameter({
-      Name: "AZURE_STORAGE_ACCOUNT_NAME",
-      WithDecryption: true,
-    });
+    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+    // const ssm = new AWS.SSM();
+    // const accountName = await ssm.getParameter({
+    //   Name: "AZURE_STORAGE_ACCOUNT_NAME",
+    //   WithDecryption: true,
+    // });
     if (!accountName) throw Error("Azure Storage accountName not found");
 
     const blobServiceClient = new BlobServiceClient(
