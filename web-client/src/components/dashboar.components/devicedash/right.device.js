@@ -13,7 +13,7 @@ const RightDevice = () => {
   var new_list = [];
   useEffect(() => {
     upload();
-    fetch("http://localhost:5000/user")
+    fetch("http://13.232.127.197:5000/user")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
