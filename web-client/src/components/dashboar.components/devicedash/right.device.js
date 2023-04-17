@@ -17,8 +17,8 @@ const RightDevice = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        let uniqueItems = [...new Set(data)];
-        seturls(uniqueItems);
+
+        seturls(data);
         setSpinner(false);
       })
       .catch((err) => {

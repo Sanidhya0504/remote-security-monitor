@@ -44,9 +44,10 @@ async function getList() {
     new_list = [...new Set(new_list)];
     for (var i in new_list) {
       list.push(new_list[i]);
+      let unique = [...new Set(list)];
     }
     console.log(list);
-    return list;
+    return unique;
   } catch (e) {
     console.log(e);
   }
