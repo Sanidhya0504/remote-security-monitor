@@ -11,7 +11,7 @@ app.use(express.json());
 const container = require("./cloud-operations/container-creaet");
 const { getList, list } = require("./cloud-operations/container-get");
 //const getlist = require("./cloud-operations/container-get");
-app.listen(5000, () => console.log("Server is Running"));
+app.listen(8000, () => console.log("Server is Running"));
 // const AWS = require("aws-sdk");
 
 // var newuri = "";
