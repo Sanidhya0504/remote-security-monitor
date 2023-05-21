@@ -16,9 +16,10 @@ var list = [];
 //     .promise();
 //   accountName = accname;
 // })();
-async function getList() {
+async function getList(uid) {
   var new_list = [];
-  const containerName = "1eea3";
+  const containerName = uid;
+  console.log(uid);
   console.log("get list calleds");
   try {
     const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;

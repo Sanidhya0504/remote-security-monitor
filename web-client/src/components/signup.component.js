@@ -20,7 +20,7 @@ class SignUp extends Component {
     e.preventDefault();
     const { fname, lname, email, password } = this.state;
     console.log(fname, lname, email, password);
-    fetch("http://localhost:5000/register", {
+    fetch("http://13.233.63.116:8000/register", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -40,7 +40,7 @@ class SignUp extends Component {
         console.log(data, "userRegister");
         const userId = data.userId;
         if (data.status === "ok") {
-          this.props.navHook("/user/dashboard");
+          this.props.navHook("/sign-in");
         }
         //navigate("/user/" + userId);
       });

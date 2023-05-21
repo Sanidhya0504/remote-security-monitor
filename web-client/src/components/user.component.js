@@ -6,7 +6,7 @@ const User = () => {
   var list = [];
   var new_list = [];
   useEffect(() => {
-    fetch("http://localhost:5000/user")
+    fetch(`http://localhost:8000/user?id=${props.userId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

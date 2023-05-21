@@ -30,11 +30,11 @@ async function createContainer(containerName) {
       new DefaultAzureCredential()
     );
     console.log(`Container created with container id ${containerName}`);
-    // const containerClient = blobServiceClient.getContainerClient(containerName);
-    // const createContainerResponse = await containerClient.create();
-    // console.log(
-    //   `Container was created successfully.\n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`
-    // );
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const createContainerResponse = await containerClient.create();
+    console.log(
+      `Container was created successfully.\n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`
+    );
   } catch (e) {
     console.log(e);
   }

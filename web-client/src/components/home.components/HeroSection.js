@@ -11,25 +11,25 @@ function HeroSection() {
       </div>
 
       <div className="hero-btns">
-        <Button
-          className="btns"
-          buttonStyle="btn--outline"
-          buttonSize="btn--large"
-        >
-          <Link className="text-decoration-none text-light" to="/sign-in">
+        <Link className="text-decoration-none text-light" to="/sign-in">
+          <Button
+            className="btns"
+            buttonStyle="btn--outline"
+            buttonSize="btn--large"
+          >
             Sign-in
-          </Link>
-        </Button>
-        <Button
-          className="btns "
-          buttonStyle="btn--primary"
-          buttonSize="btn--large-dark"
-        >
-          <Link className="text-decoration-none text-dark" to="/sign-up">
+          </Button>
+        </Link>
+        <Link className="text-decoration-none text-dark" to="/sign-up">
+          <Button
+            className="btns "
+            buttonStyle="btn--primary"
+            buttonSize="btn--large-dark"
+          >
             Sign-up
-          </Link>
-          <i className="far fa-play-circle" />
-        </Button>
+            <i className="far fa-play-circle" />
+          </Button>
+        </Link>
       </div>
     </div>
   );

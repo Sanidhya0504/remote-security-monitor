@@ -7,11 +7,13 @@ const bcrypt = require("bcryptjs");
 const { v1: uuidv1 } = require("uuid");
 app.use(cors());
 app.use(express.json());
+const jwt = require("jsonwebtoken");
+const JWT_SECRET = "jnkjaiclji0430-iacwuherkppakoicniofK";
 //const ssm = require("aws-cdk-lib/aws-ssm");
 const container = require("./cloud-operations/container-creaet");
 const { getList, list } = require("./cloud-operations/container-get");
 //const getlist = require("./cloud-operations/container-get");
-app.listen(5000, () => console.log("Server is Running"));
+app.listen(8000, () => console.log("Server is Running"));
 // const AWS = require("aws-sdk");
 
 // var newuri = "";
@@ -25,6 +27,7 @@ app.listen(5000, () => console.log("Server is Running"));
 //     .promise();
 //   newuri = mongouri;
 // })();
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -66,9 +69,33 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ error: "User not found" });
+    }
+    if (await bcrypt.compare(password, user.password)) {
+      const userid = user.userid;
+      const containerName = userid.substring(0, 5);
+      if (res.status(201)) {
+        return res.json({ status: "ok", userid: containerName });
+      } else {
+        return res.json({ error: "error" });
+      }
+    }
+    res.json({ status: "error", error: "Invalid Password" });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
+
 app.get("/user", async (req, res) => {
+  let uid = req.query.id;
+  console.log(uid);
   console.log("get request");
-  await new Promise((resolve) => setTimeout(() => resolve(getList()), 5000));
+  await new Promise((resolve) => setTimeout(() => resolve(getList(uid)), 5000));
   console.log(list);
   res.send(list);
 });
